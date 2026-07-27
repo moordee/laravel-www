@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUD Data Siswa</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-light">
+    <div class="container py-4">
+      <h2 class="mb-4">Data Siswa</h2>
+
+      <!-- Button Tambah -->
+      <button
+        class="btn btn-primary mb-3"
+        data-bs-toggle="modal"
+        data-bs-target="#tambahDataModal"
+      >
+        Tambah Data
+      </button>
+
+      <!-- Table -->
+      <table class="table table-bordered table-striped align-middle text-center">
+        <thead class="table-dark">
+          <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Kelas</th>
+            <th>Jenis Kelamin</th>
+            <th>Alamat</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="siswaTableBody">
+          <tr>
+            <td>1</td>
+            <td>Chaima Tanzouine</td>
+            <td>X RPL 1</td>
+            <td>Perempuan</td>
+            <td>Jl. Merpati No. 45</td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-warning btn-sm btn-ubah"
+                data-bs-toggle="modal"
+                data-bs-target="#editDataModal"
+              >
+                Ubah
+              </button>
+              <button type="button" class="btn btn-danger btn-sm btn-hapus">
+                Hapus
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Modal Tambah Data -->
+    <div class="modal fade" id="tambahDataModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Tambah Data Siswa</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="inputNama" class="form-label">Nama Siswa</label>
+              <input type="text" id="inputNama" class="form-control" />
+            </div>
+            <div class="mb-3">
+              <label for="selectKelas" class="form-label">Kelas</label>
+              <select id="selectKelas" class="form-select">
+                <option value="" selected disabled>Pilih Kelas</option>
+                <option value="X RPL 1">X RPL 1</option>
+                <option value="X RPL 2">X RPL 2</option>
+                <option value="XI RPL 1">XI RPL 1</option>
+                <option value="XI RPL 2">XI RPL 2</option>
+                <option value="XII RPL 1">XII RPL 1</option>
+                <option value="XII RPL 2">XII RPL 2</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Jenis Kelamin</label><br />
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="jkRadio"
+                  id="jkL"
+                  value="Laki-laki"
+                />
+                <label class="form-check-label" for="jkL">Laki-laki</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="jkRadio"
+                  id="jkP"
+                  value="Perempuan"
+                />
+                <label class="form-check-label" for="jkP">Perempuan</label>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="inputAlamat" class="form-label">Alamat</label>
+              <textarea id="inputAlamat" class="form-control" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Batal
+            </button>
+            <button type="button" class="btn btn-primary" id="btnSimpanTambah">
+              Simpan
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Edit Data -->
+    <div class="modal fade" id="editDataModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Data Siswa</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="editNama" class="form-label">Nama Siswa</label>
+              <input type="text" id="editNama" class="form-control" />
+            </div>
+            <div class="mb-3">
+              <label for="editKelas" class="form-label">Kelas</label>
+              <select id="editKelas" class="form-select">
+                <option value="X RPL 1">X RPL 1</option>
+                <option value="X RPL 2">X RPL 2</option>
+                <option value="XI RPL 1">XI RPL 1</option>
+                <option value="XI RPL 2">XI RPL 2</option>
+                <option value="XII RPL 1">XII RPL 1</option>
+                <option value="XII RPL 2">XII RPL 2</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Jenis Kelamin</label><br />
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="editJkRadio"
+                  id="editJkL"
+                  value="Laki-laki"
+                />
+                <label class="form-check-label" for="editJkL">Laki-laki</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="editJkRadio"
+                  id="editJkP"
+                  value="Perempuan"
+                />
+                <label class="form-check-label" for="editJkP">Perempuan</label>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="editAlamat" class="form-label">Alamat</label>
+              <textarea id="editAlamat" class="form-control" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Batal
+            </button>
+            <button type="button" class="btn btn-success" id="btnSimpanEdit">
+              Simpan Perubahan
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const tbody = document.getElementById("siswaTableBody");
+
+      // Tambah Data
+      document.getElementById("btnSimpanTambah").addEventListener("click", () => {
+        const nama = document.getElementById("inputNama").value.trim();
+        const kelas = document.getElementById("selectKelas").value;
+        const jk =
+          document.querySelector("input[name='jkRadio']:checked")?.value || "";
+        const alamat = document.getElementById("inputAlamat").value.trim();
+
+        if (!nama || !kelas || !jk || !alamat) {
+          alert("Semua field harus diisi!");
+          return;
+        }
+
+        const newRow = document.createElement("tr");
+        newRow.innerHTML = `
+          <td></td>
+          <td>${nama}</td>
+          <td>${kelas}</td>
+          <td>${jk}</td>
+          <td>${alamat}</td>
+          <td>
+            <button type="button" class="btn btn-warning btn-sm btn-ubah" data-bs-toggle="modal" data-bs-target="#editDataModal">Ubah</button>
+            <button type="button" class="btn btn-danger btn-sm btn-hapus">Hapus</button>
+          </td>
+        `;
+        tbody.appendChild(newRow);
+        updateNomor();
+
+        // Reset form
+        document.getElementById("inputNama").value = "";
+        document.getElementById("selectKelas").value = "";
+        document.querySelectorAll("input[name='jkRadio']").forEach((el) => (el.checked = false));
+        document.getElementById("inputAlamat").value = "";
+
+        bootstrap.Modal.getInstance(
+          document.getElementById("tambahDataModal")
+        ).hide();
+      });
+
+      // Event Delegation for Edit & Delete
+      let rowToEdit = null;
+      tbody.addEventListener("click", (e) => {
+        if (e.target.classList.contains("btn-ubah")) {
+          rowToEdit = e.target.closest("tr

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Data Siswa</title>
+    <!-- Required meta tags -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Latihan Modal Bootstrap" />
+    <meta name="author" content="Scientia" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark bg-success">
+        <a class="navbar-brand ms-2" href="#"> Sekolah</a>
+        <button
+          class="navbar-toggler d-lg-none"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapsibleNavId"
+          aria-controls="collapsibleNavId"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        ></button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+          <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="#" aria-current="page"
+                ><span class="visually-hidden"></span
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="siswa.html">Siswa</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="guru.html">Guru</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="mapel.html">Mata Pelajaran </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <div class="container">
+      <div class="card mt-5">
+        <div class="card-header bg-success text-white">
+          <div class="row">
+            <div class="col d-flex">
+              <div class="card-title fs-5">Data Siswa</div>
+              <div class="col text-end">
+                <button
+                  type="button"
+                  class="btn btn-outline-light float-end"
+                  data-bs-toggle="modal"
+                  data-bs-target="#tambahDataModal"
+                >
+                  Tambah
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama Siswa</th>
+                <th>Kelas</th>
+                <th>JK</th>
+                <th>Alamat</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Chaima Tanzouine</td>
+                <td>XI RPL 1</td>
+                <td>Perempuan</td>
+                <td>Tangier</td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-warning btn-sm btn-ubah"
+                    data-bs-toggle="modal"
+                    data-bs-target="#editDataModal"
+                  >
+                    Ubah
+                  </button>
+
+                  <button
+                    type="button"
+                    class="btn btn-danger btn-sm btn-hapus"
+                  >
+                    Hapus
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Modal Edit -->
+    <div
+      class="modal fade"
+      id="editDataModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="editDataModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editDataModalLabel">Ubah Data Siswa</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row mb-4">
+                <div class="col-3">
+                  <label for="editNama" class="form-label-inline">Nama Siswa</label>
+                </div>
+                <div class="col-9">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="nama"
+                    id="editNama"
+                    value="Chaima Tanzouine"
+                  />
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col-3">
+                  <label for="editKelas" class="form-label-inline">Kelas</label>
+                </div>
+                <div class="col-9">
+                  <select
+                    class="form-select form-select-sm"
+                    name="kelas"
+                    id="editKelas"
+                  >
+                    <option value="X RPL 1">X RPL 1</option>
+                    <option value="X RPL 2">X RPL 2</option>
+                    <option value="XI RPL 1" selected>XI RPL 1</option>
+                    <option value="XI RPL 2">XI RPL 2</option>
+                    <option value="XII RPL 1">XII RPL 1</option>
+                    <option value="XII RPL 2">XII RPL 2</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row mb-4">
+                <div class="col-3">
+                  <label class="form-label-inline">Jenis Kelamin</label>
+                </div>
+                <div class="col-9">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="editJkRadio"
+                      id="editJkL"
+                      value="Laki-laki"
+                    />
+                    <label class="form-check-label" for="editJkL"
+                      >Laki-laki</label
+                    >
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="editJkRadio"
+                      id="editJkP"
+                      value="Perempuan"
+                      checked
+                    />
+                    <label class="form-check-label" for="editJkP"
+                      >Perempuan</label
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                  <label for="editAlamat" class="form-label-inline">Alamat</label>
+                </div>
+                <div class="col-9">
+                  <textarea class="form-control" name="alamat" id="editAlamat" rows="3">Tangier</textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Batal
+            </button>
+            <button type="button" class="btn btn-primary" id="btnSimpanEdit">Simpan</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Tambah -->
+    <div
+      class="modal fade"
+      id="tambahDataModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="tambahDataModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="tambahDataModalLabel">Tambah Data Siswa</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row mb-4">
+                <div class="col-3">
+                  <label for="inputNama" class="form-label-inline">Nama Siswa</label>
+                </div>
+                <div class="col-9">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="nama"
+                    id="inputNama"
+                  />
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col-3">
+                  <label for="selectKelas" class="form-label">Kelas</label>
+                </div>
+                <div class="col-9">
+                  <select
+                    class="form-select"
+                    name="kelas"
+                    id="selectKelas"
+                  >
+                    <option value="" selected disabled>Pilih Kelas</option>
+                    <option value="X RPL 1">X RPL 1</option>
+                    <option value="X RPL 2">X RPL 2</option>
+                    <option value="XI RPL 1">XI RPL 1</option>
+                    <option value="XI RPL 2">XI RPL 2</option>
+                    <option value="XII RPL 1">XII RPL 1</option>
+                    <option value="XII RPL 2">XII RPL 2</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col-3">
+                  <label class="form-label-inline">Jenis Kelamin</label>
+                </div>
+                <div class="col-9">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="jkRadio"
+                      id="jkL"
+                      value="Laki-laki"
+                    />
+                    <label class="form-check-label" for="jkL"
+                      >Laki-laki</label
+                    >
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="jkRadio"
+                      id="jkP"
+                      value="Perempuan"
+                    />
+                    <label class="form-check-label" for="jkP"
+                      >Perempuan</label
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="row my-3">
+                <div class="col-3">
+                  <label for="inputAlamat" class="col-form-label">Alamat</label>
+                </div>
+                <div class="col-9">
+                  <textarea class="form-control" name="alamat" id="inputAlamat" rows="3"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Batal
+            </button>
+            <button type="button" class="btn btn-primary" id="btnSimpanTambah">Simpan</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const tbody = document.querySelector("table tbody");
+        let counter = tbody.rows.length;
+
+        // --- Tambah Data ---
+        const simpanTambahBtn = document.getElementById("btnSimpanTambah");
+        simpanTambahBtn.addEventListener("click", function () {
+          const nama = document.getElementById("inputNama").value.trim();
+          const kelas = document.getElementById("selectKelas").value;
+          const jk = document.querySelector("input[name='jkRadio']:checked")?.value || "";
+          const alamat = document.getElementById("inputAlamat").value.trim();
+
+          if (!nama || !kelas || !jk || !alamat) {
+            alert("Harap isi semua field!");
+            return;
+          }
+
+          counter++;
+
+          const newRow = tbody.insertRow();
+          newRow.innerHTML = `
+            <td>${counter}</td>
+            <td>${nama}</td>
+            <td>${kelas}</td>
+            <td>${jk}</td>
+            <td>${alamat}</td>
+            <td>
+              <button type="button" class="btn btn-warning btn-sm btn-ubah" data-bs-toggle="modal" data-bs-target="#editDataModal">Ubah</button>
+              <button type="button" class="btn btn-danger btn-sm btn-hapus">Hapus</button>
+            </td>
+          `;
+
+          resetTambahForm();
+          bootstrap.Modal.getInstance(document.getElementById("tambahDataModal")).hide();
+        });
+
+        function resetTambahForm() {
+          document.getElementById("inputNama").value = "";
+          document.getElementById("selectKelas").value = "";
+          document.querySelectorAll("input[name='jkRadio']").forEach(r => r.checked = false);
+          document.getElementById("inputAlamat").value = "";
+        }
+
+        // --- Ubah Data ---
+        let currentEditRow = null;
+        tbody.addEventListener("click", function (e) {
+          if (e.target.classList.contains("btn-ubah")) {
+            currentEditRow = e.target.closest("tr");
+
+            document.getElementById("editNama").value = currentEditRow.cells[1].textContent;
+            document.getElementById("editKelas").value = currentEditRow.cells[2].textContent;
+            const jk = currentEditRow.cells[3].textContent;
+            document.getElementById("editJkL").checked = (jk === "Laki-laki");
+            document.getElementById("editJkP").checked = (jk === "Perempuan");
+            document.getElementById("editAlamat").value = currentEditRow.cells[4].textContent;
+          }
+
+          if (e.target.classList.contains("btn-hapus")) {
+            if (confirm("Apakah yakin ingin menghapus data ini?")) {
+              e.target.closest("tr").remove();
+              updateRowNumbers();
+            }
+          }
+        });
+
+        const simpanEditBtn = document.getElementById("btnSimpanEdit");
+        simpanEditBtn.addEventListener("click", function () {
+          if (!currentEditRow) return;
+
+          const nama = document.getElementById("editNama").value.trim();
+          const kelas = document.getElementById("editKelas").value;
+          const jk = document.querySelector("input[name='editJkRadio']:checked")?.value || "";
+          const alamat = document.getElementById("editAlamat").value.trim();
+
+          if (!nama || !kelas || !jk || !alamat) {
+            alert("Harap isi semua field!");
+            return;
+          }
+
+          currentEditRow.cells[1].textContent = nama;
+          currentEditRow.cells[2].textContent = kelas;
+          currentEditRow.cells[3].textContent = jk;
+          currentEditRow.cells[4].textContent = alamat;
+
+          bootstrap.Modal.getInstance(document.getElementById("editDataModal")).hide();
+        });
+
+        function updateRowNumbers() {
+          [...tbody.rows].forEach((row, index) => {
+            row.cells[0].textContent = index + 1;
+          });
+          counter = tbody.rows.length;
+        }
+      });
+    </script>
+
+    <footer>
+      <!-- place footer here -->
+    </footer>
+  </body>
+</html>
