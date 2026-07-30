@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+  <head>
+    <title>Scientia's Vending Machine</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS v5.3.8 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <style>
+      .animate-character {
+        background-image: linear-gradient(
+          -225deg,
+          #ffffff 0%,
+          #f557d3 40%,
+          #e65e2c 67%,
+          #880a0a 100%
+        );
+        background-size: auto auto;
+        background-clip: border-box;
+        background-size: 200% auto;
+        color: #fff;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: textclip 2s linear infinite;
+        display: inline-block;
+      }
+
+      @keyframes textclip {
+        to {
+          background-position: 200% center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <!-- place navbar here -->
+    </header>
+    <main>
+      <div class="container my-5 d-flex justify-content-center">
+        <div class="card text-white bg-danger" style="max-width: 50rem">
+          <div class="card-body">
+            <h4 class="card-title text-center mb-3">
+              Vending Machine - Save $$$!
+            </h4>
+            <div class="container">
+              <div class="card fw-semibold mx-3 my-3" style="height: 3rem">
+                <p class="mx-1 my-2">Select your snack</p>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div
+                    class="card text-center"
+                    id="item1"
+                    style="height: 22rem"
+                  >
+                    <img
+                      class="card-img-top mt-4"
+                      src="img/doritos-bbq.png"
+                      alt="Doritos"
+                    />
+                    <div class="card-body">
+                      <p class="card-text text-center fw-bold">Doritos: BBQ</p>
+                      <button type="button" class="btn btn-danger">Buy</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div
+                    class="card text-center"
+                    id="item2"
+                    style="height: 22rem"
+                  >
+                    <img
+                      class="card-img-top mt-4"
+                      src="img/cheetos-flamingHot.png"
+                      alt="Cheetos"
+                      style="height: 13rem"
+                    />
+                    <div class="card-body container">
+                      <p class="card-text text-center fw-bold">
+                        Cheetos: Flaming Hot
+                      </p>
+                      <button type="button" class="btn btn-danger">Buy</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div
+                    class="card text-center"
+                    id="item3"
+                    style="height: 22rem"
+                  >
+                    <img
+                      class="card-img-top mt-4"
+                      src="img/takis-fuegoFajitas.png"
+                      alt="Takis"
+                      style="height: 13rem"
+                    />
+                    <div class="card-body container">
+                      <p class="card-text text-center fw-bold">
+                        Takis: Fuego Fajitas
+                      </p>
+                      <button type="button" class="btn btn-danger">Buy</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="fs-6 text-center fw-semibold mb-3">
+      <!-- place footer here -->
+      &copy;2026 Scientia Hashina
+    </footer>
+    <!-- Bootstrap JavaScript Bundle (includes Popper) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
