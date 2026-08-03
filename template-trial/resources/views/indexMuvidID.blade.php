@@ -52,10 +52,10 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="/muvid-id">Indonesian</a>
+                                <a class="nav-link" href="/muvid">English</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="https://t.me/vkmusic_bot">Start</a>
+                                <a class="nav-link" href="https://t.me/vkmusic_bot">Gunakan</a>
                             </li>
                         </ul>
                         <form class="form-inline my-2 my-lg-0">
@@ -71,9 +71,9 @@
                                 <div class="banner_taital_section">
                                     <div class="row">
                                         <div class="col-sm-5">
-                                            <h1 class="banner_taital">listen to <br>songs<br>without leaving Telegram
+                                            <h1 class="banner_taital">dengarkan lagu <br lagu<br>tanpa meninggalkan Telegram
                                             </h1>
-                                            <div class="play_bt"><a href="#">Listen Now</a></div>
+                                            <div class="play_bt"><a href="#">Dengarkan Sekarang</a></div>
                                         </div>
                                         <div class="col-sm-7">
                                             <div class="banner_video_main">
@@ -96,9 +96,9 @@
                                 <div class="banner_taital_section">
                                     <div class="row">
                                         <div class="col-sm-5">
-                                            <h1 class="banner_taital">listen to <br>songs<br>without leaving Telegram
+                                            <h1 class="banner_taital">dengarkan <br lagu<br>tanpa meninggalkan Telegram
                                             </h1>
-                                            <div class="play_bt"><a href="#">Listen Now</a></div>
+                                            <div class="play_bt"><a href="#">Dengarkan Sekarang</a></div>
                                         </div>
                                         <div class="col-sm-7">
                                             <div class="banner_video_main">
@@ -121,9 +121,9 @@
                                 <div class="banner_taital_section">
                                     <div class="row">
                                         <div class="col-sm-5">
-                                            <h1 class="banner_taital">listen to <br>songs<br>without leaving Telegram
+                                            <h1 class="banner_taital">dengarkan <br lagu<br>tanpa meninggalkan Telegram
                                             </h1>
-                                            <div class="play_bt"><a href="#">Listen Now</a></div>
+                                            <div class="play_bt"><a href="#">Dengarkan Sekarang</a></div>
                                         </div>
                                         <div class="col-sm-7">
                                             <div class="banner_video_main">
@@ -160,9 +160,8 @@
         <!-- audio section start -->
         <div id="audio-song.html" class="audio_section layout_padding">
             <div class="container">
-                <h1 class="audio_taital">Rich Features</h1>
-                <p class="audio_text">Enjoy a wide range of features right inside the VK Music Bot, within Telegram. No
-                    need to install another app!</p>
+                <h1 class="audio_taital">Fitur yang Beragam</h1>
+                <p class="audio_text">Nikmati berbagai fitur yang tersedia langsung di dalam VK Music Bot, di dalam Telegram. Tidak perlu menginstall aplikasi lain!</p>
                 <div id="my_slider" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -170,9 +169,8 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="box_main">
-                                            <h6 class="many_text">Listen to songs </h6>
-                                            <h6 class="audio_text">Listen to songs offline through Telegram audio
-                                                player even in the background, for free.</h6>
+                                            <h6 class="many_text">Dengarkan lagu </h6>
+                                            <h6 class="audio_text">Dengarkan lagu offline melalui pemutar audio Telegram bahkan di latar belakang, gratis.</h6>
                                             <h1></h1>
                                             <br>
                                             <div class="cd_1"><img src="images/icons8-headphone-48.gif"></div>
@@ -180,8 +178,8 @@
                                     </div>
                                     <div class="col">
                                         <div class="box_main">
-                                            <h6 class="many_text">Download songs </h6>
-                                            <h6 class="audio_text">Download songs to listen offline, with zero hassle.
+                                            <h6 class="many_text">Unduh lagu </h6>
+                                            <h6 class="audio_text">Download lagu untuk didengarkan offline, tanpa repot.
                                             </h6>
                                             <br>
                                             <div class="cd_1"><img src="images/icons8-download.gif"></div>
@@ -189,27 +187,26 @@
                                     </div>
                                     <div class="col">
                                         <div class="box_main">
-                                            <h6 class="many_text">Search for songs </h6>
-                                            <h6 class="audio_text">Search for songs through artist or song name, in any
-                                                language.</h6>
+                                            <h6 class="many_text">Cari lagu </h6>
+                                            <h6 class="audio_text">Cari lagu menurut nama artis atau nama lagu, dalam bahasa apa pun.</h6>
                                             <br>
                                             <div class="cd_1"><img src="images/icons8-search.gif"></div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="box_main">
-                                            <h6 class="many_text">International artists </h6>
-                                            <h6 class="audio_text">Tired of Western music? No problem! Listen to
-                                                Indonesian, Russian, or whatever other artists you like.</h6>
+                                            <h6 class="many_text">Artis internasional </h6>
+                                            <h6 class="audio_text">Lelah mendengarkan musik Barat? Tidak masalah! Dengarkan
+                                                musik Indonesia, Rusia, atau artis lainnya yang Anda sukai.</h6>
                                             <br>
                                             <div class="cd_1"><img src="images/icons8-user-64.png"></div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="box_main">
-                                            <h6 class="many_text">Wide-range of selection </h6>
-                                            <h6 class="audio_text">Whether if you like Pop, Rock, Punk, EDM, or
-                                                Frenchcore, don't worry - we have it all.</h6>
+                                            <h6 class="many_text">Pilihan yang banyak </h6>
+                                            <h6 class="audio_text">Tak peduli jika kamu suka laguPop, Rock, Punk, EDM, atau
+                                                Frenchcore, jangan khawatir - kita punya semuanya.</h6>
                                             <br>
                                             <div class="cd_1"><img src="images/icons8-world.gif"></div>
                                         </div>
@@ -222,41 +219,39 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="box_main">
-                                            <h6 class="many_text">Listen to songs </h6>
-                                            <h6 class="audio_text">Listen to songs offline through Telegram audio
-                                                player even in the background, for free.</h6>
+                                            <h6 class="many_text">Dengarkan lagu </h6>
+                                            <h6 class="audio_text">Dengarkan lagu offline melalui pemutar audio Telegram bahkan di latar belakang, gratis.</h6>
                                             <div class="cd_1"><img src="images/icons8-headphone-48.gif"></div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="box_main">
-                                            <h6 class="many_text">Download songs </h6>
-                                            <h6 class="audio_text">Download songs to listen offline, with zero hassle.
+                                            <h6 class="many_text">Unduh lagu </h6>
+                                            <h6 class="audio_text">Download lagu untuk didengarkan offline, tanpa repot.
                                             </h6>
                                             <div class="cd_1"><img src="images/icons8-download.gif"></div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="box_main">
-                                            <h6 class="many_text">Search for songs </h6>
-                                            <h6 class="audio_text">Search for songs through artist or song name, in any
-                                                language.</h6>
+                                            <h6 class="many_text">Cari lagu </h6>
+                                            <h6 class="audio_text">Cari lagu menurut nama artis atau nama lagu, dalam bahasa apa pun.</h6>
                                             <div class="cd_1"><img src="images/icons8-search.gif"></div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="box_main">
-                                            <h6 class="many_text">International artists </h6>
-                                            <h6 class="audio_text">Discover music from around the world and support
-                                                your favorite international artists.</h6>
+                                            <h6 class="many_text">Artis internasional </h6>
+                                            <h6 class="audio_text">Temukan musik dari seluruh dunia dan dukung
+                                                artis internasional favorit Anda.</h6>
                                             <div class="cd_1"><img src="images/icons8-user-64.png"></div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="box_main">
-                                            <h6 class="many_text">Wide-range of selection </h6>
-                                            <h6 class="audio_text">Whether if you like Pop, Rock, Punk, EDM, or
-                                                Frenchcore, don't worry - we have it all.</h6>
+                                            <h6 class="many_text">Pilihan yang Banyak </h6>
+                                            <h6 class="audio_text">Tak peduli jika kamu suka laguPop, Rock, Punk, EDM, atau
+                                                Frenchcore, jangan khawatir - kita punya semuanya.</h6>
                                             <div class="cd_1"><img src="images/icons8-world.gif"></div>
                                         </div>
                                     </div>
@@ -268,41 +263,39 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="box_main">
-                                            <h6 class="many_text">Listen to songs </h6>
-                                            <h6 class="audio_text">Listen to songs offline through Telegram audio
-                                                player even in the background, for free.</h6>
+                                            <h6 class="many_text">Dengarkan lagu </h6>
+                                            <h6 class="audio_text">Dengarkan lagu offline melalui pemutar audio Telegram bahkan di latar belakang, gratis.</h6>
                                             <div class="cd_1"><img src="images/icons8-headphone-48.gif"></div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="box_main">
-                                            <h6 class="many_text">Download songs </h6>
-                                            <h6 class="audio_text">Download songs to listen offline, with zero hassle.
+                                            <h6 class="many_text">Unduh lagu </h6>
+                                            <h6 class="audio_text">Download lagu untuk didengarkan offline, tanpa repot.
                                             </h6>
                                             <div class="cd_1"><img src="images/icons8-download.gif"></div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="box_main">
-                                            <h6 class="many_text">Search for songs </h6>
-                                            <h6 class="audio_text">Search for songs through artist or song name, in any
-                                                language.</h6>
+                                            <h6 class="many_text">Cari lagu </h6>
+                                            <h6 class="audio_text">Cari lagu menurut nama artis atau nama lagu, dalam bahasa apa pun.</h6>
                                             <div class="cd_1"><img src="images/icons8-search.gif"></div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="box_main">
-                                            <h6 class="many_text">International artists </h6>
-                                            <h6 class="audio_text">Discover music from around the world and support
-                                                your favorite international artists.</h6>
+                                            <h6 class="many_text">Artis internasional </h6>
+                                            <h6 class="audio_text">Temukan musik dari seluruh dunia dan dukung
+                                                artis internasional favorit Anda.</h6>
                                             <div class="cd_1"><img src="images/icons8-user-64.png"></div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="box_main">
-                                            <h6 class="many_text">Wide-range of selection </h6>
-                                            <h6 class="audio_text">Whether if you like Pop, Rock, Punk, EDM, or
-                                                Frenchcore, don't worry - we have it all.</h6>
+                                            <h6 class="many_text">Pilihan yang Banyak </h6>
+                                            <h6 class="audio_text">Tak peduli jika kamu suka Pop, Rock, Punk, EDM, atau
+                                                Frenchcore, jangan khawatir - kita punya semuanya.</h6>
                                             <div class="cd_1"><img src="images/icons8-world.gif"></div>
                                         </div>
                                     </div>
@@ -317,7 +310,7 @@
                         <i class="fa fa-angle-right"></i>
                     </a>
                 </div>
-                <div class="Seemore_bt"><a href="#">See More</a></div>
+                <div class="Seemore_bt"><a href="#">Baca Selengkapnya</a></div>
             </div>
         </div>
         <!-- audio section end -->
@@ -326,16 +319,16 @@
     <!-- footer section start -->
     <div class="footer_section layout_padding">
         <div class="container">
-            <h1 class="follow_text mb-2">Subscribe to Receive Updates from Us</h1>
+            <h1 class="follow_text mb-2">Berlanggananlah Sekarang untuk Menerima Kabar Terbaru</h1>
             <div class="mail_section">
                 <input type="text" class="mail_text" placeholder="Enter Your Email" name="Enter Your Email">
-                <div class="subscribe_bt"><a href="#">Subscribe</a></div>
+                <div class="subscribe_bt"><a href="#">Berlangganan</a></div>
             </div>
             <div class="contact_main">
                 <ul>
                     <li>
                         <a href="#"><img src="images/call-icon.png">
-                            <span class="padding_15">Call +7 666 666 666</span></a>
+                            <span class="padding_15">Telepon +7 666 666 666</span></a>
                     </li>
                     <li>
                         <a href="#"><img src="images/mail-icon.png">
@@ -366,8 +359,8 @@
     <div class="copyright_section">
         <div class="container">
             <p class="copyright_text">&copy;2026 All Rights Reserved.<a href="https://html.design" target="_blank">
-                    Free html templates</a> distributed by <a href="https://themewagon.com"
-                    target="_blank">ThemeWagon</a>, edited by <a href="https://github.com/moordee"
+                    Template html gratis</a> di distribusikan oleh <a href="https://themewagon.com"
+                    target="_blank">ThemeWagon</a>, di edit oleh <a href="https://github.com/moordee"
                     target="_blank">Scientia Hashina</a>.</p>
         </div>
     </div>
