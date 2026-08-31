@@ -2,12 +2,32 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/def', function () {
+    return view('welcome');
+});
+
+Route::get('/master', function () {
+    return view('layout.master');
+});
+
+Route::get('/beranda', function () {
+    return view('beranda');
+});
+
+Route::get('/profil', function () {
+    return view('profil');
+});
+
 Route::get('/', function () {
-    return view('index');
+    return view('layouts.index');
 });
 
 Route::get('/jasa', function () {
-    return view('jasa');
+    return view('layouts.jasa');
+});
+
+Route::get('/transaksi', function () {
+    return view('layouts.transaksi');
 });
 
 Route::get('/charts', function () {

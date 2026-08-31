@@ -53,7 +53,7 @@
     </header>
     <main>
       <div class="container my-5 d-flex justify-content-center">
-        <div class="card text-white bg-danger" style="max-width: 50rem">
+        <div class="card text-white bg-dark" style="max-width: 50rem">
           <div class="card-body">
             <h4 class="card-title text-center mb-3">
               Vending Machine -
@@ -62,14 +62,14 @@
             <div class="container">
               <div class="row">
                 <div class="col">
-                  <div class="card mx-3 my-3" style="height: 6rem">
+                  <div class="card mx-3 my-3" style="height: 6rem" id="hasilLabelSaldo">
                     <p class="fw-bold mx-2 mt-2 mb-1">Your Balance:</p>
-                    <p class="mx-2 fs-3" id="saldoUang">Rp. 20.000</p>
+                    <p class="mx-2 fs-3">Rp. 20.000</p>
                   </div>
                 </div>
                 <div class="col">
                   <div class="card mx-3 my-3" style="height: 6rem">
-                    <p class="fw-bold mx-2 mt-2 mb-1">
+                    <p class="fw-bold mx-2 mt-2 mb-1" id="hasilHargaMinuman">
                       Select a snack you like
                     </p>
                     <p class="mx-2 fs-3" id="hasilMinuman">-</p>
@@ -91,7 +91,13 @@
                     <div class="card-body">
                       <p class="text-center mb-0">Rp. 15.000</p>
                       <p class="card-text text-center fw-bold">Doritos: BBQ</p>
-                      <button type="button" class="btn btn-danger" onclick="Vmachine('Doritos')">Buy</button>
+                      <button
+                        type="button"
+                        class="btn btn-warning"
+                        onclick="Vmachine('Doritos', '15000')"
+                      >
+                        Buy
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -112,7 +118,13 @@
                       <p class="card-text text-center fw-bold">
                         Cheetos: Flaming Hot
                       </p>
-                      <button type="button" onclick="Vmachine('Cheetos')"   class="btn btn-danger">Buy</button>
+                      <button
+                        type="button"
+                        onclick="Vmachine('Cheetos', '20000')"
+                        class="btn btn-warning"
+                      >
+                        Buy
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -133,7 +145,13 @@
                       <p class="card-text text-center fw-bold">
                         Takis: Fuego Fajitas
                       </p>
-                      <button type="button" onclick="Vmachine('Takis')" class="btn btn-danger">Buy</button>
+                      <button
+                        type="button"
+                        onclick="Vmachine('Takis', '21000')"
+                        class="btn btn-warning"
+                      >
+                        Buy
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -154,8 +172,20 @@
       crossorigin="anonymous"
     ></script>
     <script>
-      function Vmachine(menu) {
+      let saldo = 20000;
+      function Vmachine(menu, harga) {
         document.getElementById("hasilMinuman").innerHTML = menu;
+        document.getElementById("hasilHargaMinuman").innerHTML = harga;
+        
+        const LabelSaldo = document.getElementById("hasilLabelSaldo");
+        
+        if (saldo >= harga) {
+          console.log("Kamu bisa beli makanan ini");
+          LabelSaldo.classList.remove("bg-danger");
+        }else{
+          LabelSaldo.classList.add("bg-danger");
+          console.log("Kamu tidak bisa beli makanan ini");
+        }
       }
     </script>
   </body>
