@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BeeBlog: Galeri</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Font (Inter) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gray-950 text-gray-100 selection:bg-amber-500/30 selection:text-amber-200 antialiased"
+  >
+    <!-- Navbar -->
+    <nav
+      id="navbar"
+      class="fixed w-full z-50 transition-all duration-300 bg-transparent py-6"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center">
+          <!-- Logo -->
+          <div class="flex items-center gap-2 cursor-pointer">
+            <div
+              class="bg-gradient-to-br from-amber-400 to-orange-500 p-2 rounded-xl text-white"
+            >
+              <i data-lucide="hexagon" class="w-6 h-6"></i>
+            </div>
+            <span class="font-bold text-2xl tracking-tight text-white"
+              >Bee<span class="text-amber-500">Blog</span></span
+            >
+          </div>
+
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="index.html"
+              class="text-gray-300 hover:text-amber-500 font-medium transition-colors"
+              >Beranda</a
+            >
+            <a
+              href="#"
+              class="text-gray-300 hover:text-amber-500 font-medium transition-colors"
+              >Artikel</a
+            >
+            <a
+              href="galeri.html"
+              class="text-gray-300 hover:text-amber-500 font-medium transition-colors"
+              >Galeri</a
+            >
+            <a
+              href="#"
+              class="text-gray-300 hover:text-amber-500 font-medium transition-colors"
+              >Tentang</a
+            >
+            <button
+              class="bg-gray-800 hover:bg-gray-700 p-2 rounded-full transition-colors"
+            >
+              <i data-lucide="search" class="w-5 h-5 text-gray-300"></i>
+            </button>
+          </div>
+
+          <!-- Mobile Menu Toggle -->
+          <div class="md:hidden flex items-center">
+            <button id="mobile-menu-btn" class="text-gray-300">
+              <i id="menu-icon" data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Dropdown -->
+      <div
+        id="mobile-menu"
+        class="hidden absolute top-full left-0 w-full bg-gray-900 border-b border-gray-800 shadow-lg py-4 px-4 flex-col space-y-4"
+      >
+        <a href="index.html" class="text-gray-100 font-medium">Beranda</a>
+        <a href="#" class="text-gray-100 font-medium">Artikel</a>
+        <a href="galeri.html" class="text-gray-100 font-medium">Galeri</a>
+        <a href="#" class="text-gray-100 font-medium">Tentang</a>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Hero Section -->
+      <div class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+          <div
+            class="absolute inset-0 bg-gradient-to-b from-amber-900/10 to-gray-950"
+          ></div>
+          <div
+            class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-amber-500/10 blur-3xl"
+          ></div>
+          <div
+            class="absolute bottom-0 left-0 -ml-20 w-72 h-72 rounded-full bg-orange-500/10 blur-3xl"
+          ></div>
+        </div>
+
+        <div
+          class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        >
+          <span
+            class="inline-block py-1 px-3 rounded-full bg-amber-500/10 text-amber-400 font-semibold text-sm mb-6 border border-amber-500/20"
+          >
+            Wujud Asli Para Lebah
+          </span>
+          <h1
+            class="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-8 leading-tight"
+          >
+            Jelajahi Galeri<br class="hidden md:block" />
+            <span
+              class="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-orange-500"
+            >
+              Lebah
+            </span>
+          </h1>
+            <a
+            type="button"
+              class="px-8 py-4 bg-gray-900 text-white border border-gray-700 rounded-full font-semibold text-lg hover:bg-gray-800 transition-all shadow-sm"
+              href="galeri.html#MainGalery"
+              >
+              Lihat Galeri
+            </a>
+          </div>
+        </div>
+
+      <!-- Galeri Section -->
+      <section
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20"
+        id="MainGalery"
+      >
+        <div class="flex items-end justify-between mb-12">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+              Macam-macam Lebah
+            </h2>
+            <p class="text-gray-400">
+              Lihat wujud asli lebah-lebah yang menghasilkan madu yang lezat serta menjaga ekosistem dunia.
+            </p>
+          </div>
+        </div>
+
+      <!-- Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <!-- Card 1 -->
+        <article
+          class="group bg-gray-900 rounded-3xl overflow-hidden shadow-xl hover:shadow-[0_8px_30px_rgb(245,158,11,0.15)] border border-gray-800 transition-all duration-300 hover:-translate-y-2 flex flex-col h-full"
+        >
+          <div class="relative h-64 overflow-hidden">
+            <div
+              class="absolute inset-0 bg-gray-900/30 group-hover:bg-transparent transition-colors z-10"
+            ></div>
+            <img
+              src="img/pollydot-honey-bees-401238_1280.jpg"
+              alt="Lebah Madu"
+              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
+            />
+          </div>
+          <div class="p-8 flex flex-col flex-grow">
+            <div class="flex flex-wrap gap-2 mb-4">
+              <h3
+                class="text-2xl font-bold text-gray-100 mb-3 group-hover:text-amber-500 transition-colors"
+              >
+                Lebah Madu
+              </h3>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article
+          class="group bg-gray-900 rounded-3xl overflow-hidden shadow-xl hover:shadow-[0_8px_30px_rgb(245,158,11,0.15)] border border-gray-800 transition-all duration-300 hover:-translate-y-2 flex flex-col h-full"
+        >
+          <div class="relative h-64 overflow-hidden">
+            <div
+              class="absolute inset-0 bg-gray-900/30 group-hover:bg-transparent transition-colors z-10"
+            ></div>
+            <img
+              src="img/wikipedia-lebah-kelulut.jpg"
+              alt="Lebah Kelulut"
+              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
+            />
+          </div>
+          <div class="p-8 flex flex-col flex-grow">
+            <h3
+              class="text-2xl font-bold text-gray-100 mb-3 group-hover:text-amber-500 transition-colors"
+            >
+              Lebah Kelulut (Teuweul)
+            </h3>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article
+          class="group bg-gray-900 rounded-3xl overflow-hidden shadow-xl hover:shadow-[0_8px_30px_rgb(245,158,11,0.15)] border border-gray-800 transition-all duration-300 hover:-translate-y-2 flex flex-col h-full"
+        >
+          <div class="relative h-64 overflow-hidden">
+            <div
+              class="absolute inset-0 bg-gray-900/30 group-hover:bg-transparent transition-colors z-10"
+            ></div>
+            <img
+              src="img/radfotosonn-carpenter-bee-3204522_1280.jpg"
+              alt="Lebah Kayu"
+              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
+            />
+          </div>
+          <div class="p-8 flex flex-col flex-grow">
+            <h3
+              class="text-2xl font-bold text-gray-100 mb-3 group-hover:text-amber-500 transition-colors"
+            >
+              Lebah Kayu
+            </h3>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article
+          class="group bg-gray-900 rounded-3xl overflow-hidden shadow-xl hover:shadow-[0_8px_30px_rgb(245,158,11,0.15)] border border-gray-800 transition-all duration-300 hover:-translate-y-2 flex flex-col h-full"
+        >
+          <div class="relative h-64 overflow-hidden">
+            <div
+              class="absolute inset-0 bg-gray-900/30 group-hover:bg-transparent transition-colors z-10"
+            ></div>
+            <img
+              src="img/claudiawollesen-bumblebee-711677_1280.jpg"
+              alt="Bumblebee"
+              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
+            />
+          </div>
+          <div class="p-8 flex flex-col flex-grow">
+            <h3
+              class="text-2xl font-bold text-gray-100 mb-3 group-hover:text-amber-500 transition-colors"
+            >
+              Bumblebee
+            </h3>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-20 pb-10 mt-20 rounded-t-[3rem]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+          <div class="col-span-1">
+            <div class="flex items-center gap-2 mb-6">
+              <div
+                class="bg-gradient-to-br from-amber-400 to-orange-500 p-2 rounded-xl"
+              >
+                <i data-lucide="hexagon" class="w-6 h-6 text-white"></i>
+              </div>
+              <span class="font-bold text-2xl tracking-tight"
+                >Bee<span class="text-amber-500">Blog</span></span
+              >
+            </div>
+            <p class="text-gray-400 leading-relaxed mb-6 max-w-sm">
+              Mendedikasikan ruang untuk mengedukasi masyarakat tentang
+              pentingnya menjaga populasi lebah untuk masa depan bumi.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-lg mb-6">Jelajahi</h4>
+            <ul class="space-y-4 text-gray-400">
+              <li>
+                <a href="#" class="hover:text-amber-500 transition-colors"
+                  >Semua Artikel</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-amber-500 transition-colors"
+                  >Jenis-Jenis Lebah</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-amber-500 transition-colors"
+                  >Manfaat Madu</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-amber-500 transition-colors"
+                  >Cara Menyelamatkan Lebah</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-lg mb-6">Berlangganan Newsletter</h4>
+            <p class="text-gray-400 mb-4">
+              Dapatkan artikel terbaru tentang alam dan lebah langsung di kotak
+              masuk Anda.
+            </p>
+            <form class="flex gap-2">
+              <input
+                type="email"
+                placeholder="Alamat Email Anda"
+                class="bg-gray-800 border-none rounded-xl px-4 py-3 flex-grow text-white focus:ring-2 focus:ring-amber-500 outline-none"
+              />
+              <button
+                type="button"
+                class="bg-amber-500 hover:bg-amber-600 text-gray-900 px-6 py-3 rounded-xl font-semibold transition-colors"
+              >
+                Kirim
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div
+          class="pt-8 border-t border-gray-800 text-center text-gray-500 text-sm"
+        >
+          <p>
+            &copy; <span id="current-year"></span> NectarPedia. Dibuat dengan
+            cinta untuk alam.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+      // 1. Inisialisasi Lucide Icons
+      lucide.createIcons();
+
+      // 2. Logika Scroll Navbar
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 20) {
+          // Saat discroll
+          navbar.classList.add(
+            "bg-gray-950/80",
+            "backdrop-blur-md",
+            "shadow-sm",
+            "border-b",
+            "border-gray-800",
+            "py-4",
+          );
+          navbar.classList.remove("bg-transparent", "py-6");
+        } else {
+          // Di paling atas
+          navbar.classList.remove(
+            "bg-gray-950/80",
+            "backdrop-blur-md",
+            "shadow-sm",
+            "border-b",
+            "border-gray-800",
+            "py-4",
+          );
+          navbar.classList.add("bg-transparent", "py-6");
+        }
+      });
+
+      // 3. Logika Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuIcon = document.getElementById("menu-icon");
+      let isMenuOpen = false;
+
+      mobileMenuBtn.addEventListener("click", () => {
+        isMenuOpen = !isMenuOpen;
+        if (isMenuOpen) {
+          mobileMenu.classList.remove("hidden");
+          mobileMenu.classList.add("flex");
+          menuIcon.setAttribute("data-lucide", "x");
+        } else {
+          mobileMenu.classList.add("hidden");
+          mobileMenu.classList.remove("flex");
+          menuIcon.setAttribute("data-lucide", "menu");
+        }
+        // Re-render icon karena atributnya diganti
+        lucide.createIcons();
+      });
+
+      // 4. Set Tahun Otomatis di Footer
+      document.getElementById("current-year").textContent =
+        new Date().getFullYear();
+    </script>
+  </body>
+</html>

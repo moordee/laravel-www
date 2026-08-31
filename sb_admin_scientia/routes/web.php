@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JasaController;
+use App\Http\Controllers\BerandaController;
 
 Route::get('/def', function () {
     return view('welcome');
@@ -18,13 +20,9 @@ Route::get('/profil', function () {
     return view('profil');
 });
 
-Route::get('/', function () {
-    return view('layouts.index');
-});
+Route::get('/', [BerandaController::class, 'index']);
 
-Route::get('/jasa', function () {
-    return view('layouts.jasa');
-});
+Route::get('/jasa', [JasaController::class, 'index']);
 
 Route::get('/transaksi', function () {
     return view('layouts.transaksi');

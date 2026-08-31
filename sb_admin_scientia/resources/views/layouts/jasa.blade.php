@@ -13,6 +13,7 @@
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
                     Jasa
+                    <a class="btn btn-sm btn-primary float-end" href="/jasa">Tambah Jasa</a>
                 </div>
                 <div class="card-body">
                     <table id="datatablesSimple">
