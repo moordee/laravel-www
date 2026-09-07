@@ -24,6 +24,8 @@ Route::get('/', [BerandaController::class, 'index']);
 
 Route::get('/jasa', [JasaController::class, 'index']);
 
+Route::get('/tambah_jasa', [JasaController::class, 'create']);
+
 Route::get('/transaksi', function () {
     return view('layouts.transaksi');
 });

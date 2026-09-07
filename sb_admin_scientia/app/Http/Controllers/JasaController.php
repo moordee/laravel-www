@@ -19,7 +19,7 @@ class JasaController extends Controller
      */
     public function create()
     {
-        //
+        return view ('layouts.tambah_jasa');
     }
 
     /**
