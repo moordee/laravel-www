@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class JasaController extends Controller
 {
@@ -11,7 +12,8 @@ class JasaController extends Controller
      */
     public function index()
     {
-        return view('layouts.jasa');
+        $jasa = DB::table('tb_jasa')->get();
+        return view('layouts.jasa', compact('jasa'));
     }
 
     /**
@@ -19,7 +21,7 @@ class JasaController extends Controller
      */
     public function create()
     {
-        return view ('layouts.tambah_jasa');
+        return view('layouts.tambah_jasa');
     }
 
     /**
@@ -27,7 +29,17 @@ class JasaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama_jasa' => 'required|string|max:100',
+            'harga_satuan' => 'required|numeric|min:0',
+        ]);
+
+        DB::table('tb_jasa')->insert([
+            'nama_jasa' => $validated['nama_jasa'],
+            'harga_satuan' => $validated['harga_satuan'],
+        ]);
+
+        return redirect()->route('jasa.index')->with('success', 'Jasa berhasil ditambahkan!');
     }
 
     /**
@@ -43,7 +55,14 @@ class JasaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // Fetch data based on ID
+        $jasa = DB::table('tb_jasa')->where('id', $id)->first();
+
+        if (!$jasa) {
+            abort(404, 'Data tidak ditemukan');
+        }
+
+        return view('layouts.ubah_jasa', compact('jasa'));
     }
 
     /**
@@ -51,7 +70,20 @@ class JasaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validate incoming inputs
+        $request->validate([
+            'nama_jasa' => 'required|string|max:255',
+            'harga_satuan' => 'required|numeric',
+        ]);
+
+        // Update the data in tb_jasa
+        DB::table('tb_jasa')->where('id', $id)->update([
+            'nama_jasa' => $request->nama_jasa,
+            'harga_satuan' => $request->harga_satuan,
+        ]);
+
+        // Adjust '/jasa' to whatever your main list route URL is
+        return redirect()->route('jasa.index')->with('success', 'Data jasa berhasil diperbarui!');
     }
 
     /**
@@ -59,6 +91,7 @@ class JasaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DB::table('tb_jasa')->where('id', $id)->delete();
+        return redirect()->route('jasa.index')->with('success', 'Data berhasil dihapus.');
     }
 }

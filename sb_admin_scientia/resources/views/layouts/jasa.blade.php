@@ -34,20 +34,29 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                            <tr>
-                                <td>10/08/2026</td>
-                                <td>Cuci Kering</td>
-                                <td>6.000</td>
-                                <td><a href="/jasa" class="btn btn-sm btn-warning">Ubah</a> <a href="/jasa"
-                                        class="btn btn-sm btn-danger">Hapus</a></td>
-                            </tr>
-                            <tr>
-                                <td>10/08/2026</td>
-                                <td>Cuci Setrika</td>
-                                <td>7.000</td>
-                                <td><a href="/jasa" class="btn btn-sm btn-warning">Ubah</a> <a href="/jasa"
-                                        class="btn btn-sm btn-danger">Hapus</a></td>
-                            </tr>
+                            @foreach ($jasa as $item)
+                                <tr>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->nama_jasa }}</td>
+                                    <td>Rp. {{ number_format($item->harga_satuan, 0, ',', '.') }}</td>
+                                    <td>
+                                        <a href="{{ route('jasa.edit', $item->id) }}"
+                                            class="btn btn-warning btn-sm">
+                                            Ubah
+                                        </a>
+
+                                        <form action="{{ route('jasa.destroy', $item->id) }}" method="POST"
+                                            class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Hapus data jasa ini?')">
+                                                Hapus
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

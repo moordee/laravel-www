@@ -22,10 +22,17 @@ Route::get('/profil', function () {
 
 Route::get('/', [BerandaController::class, 'index']);
 
-Route::get('/jasa', [JasaController::class, 'index']);
+Route::get('/jasa', [JasaController::class, 'index'])->name('jasa.index');
 
 Route::get('/tambah_jasa', [JasaController::class, 'create']);
 
+Route::post('/jasa/store', [JasaController::class, 'store'])->name('jasa.store');
+
+Route::delete('/jasa/{id}', [JasaController::class, 'destroy'])->name('jasa.destroy');
+
+Route::get('/ubah_jasa/{id}/edit', [JasaController::class, 'edit'])->name('jasa.edit');
+
+Route::put('/ubah_jasa/{id}', [JasaController::class, 'update'])->name('jasa.update');
 
 
 Route::get('/transaksi', function () {
