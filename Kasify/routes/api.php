@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResource('transaksi', TransactionController::class);
+Route::apiResource('transaksi', TransactionController::class)->parameters([
+    'transaksi' => 'transaction',
+]);
 Route::apiResource('anggota', AnggotaController::class)->parameters([
     'anggota' => 'anggota',
 ]);

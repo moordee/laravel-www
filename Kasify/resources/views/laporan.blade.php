@@ -61,7 +61,7 @@
         </div>
         <div>
           <label>Tanggal</label>
-          <input type="text" id="txnTanggalInput" placeholder="misal: 3 Sep">
+          <input type="date" id="txnTanggalInput" required>
         </div>
       </div>
       <div class="field">
@@ -74,7 +74,7 @@
       </div>
       <div class="field">
         <label>Jumlah (Rp)</label>
-        <input type="number" id="txnJumlahInput" placeholder="0">
+          <input type="number" id="txnJumlahInput" min="1" step="1" placeholder="0" required>
       </div>
       <div class="form-msg" id="txnModalMsg" style="margin-bottom:0;"></div>
       <div class="modal-actions">
@@ -114,7 +114,7 @@
 
   async function fetchJson(url, options = {}) {
     const response = await fetch(url, {
-      headers: apiHeaders,
+      credentials: 'same-origin',
       ...options,
       headers: {
         ...apiHeaders,
@@ -277,7 +277,7 @@
     const amount = parseInt(document.getElementById('txnJumlahInput').value, 10);
     const msg = document.getElementById('txnModalMsg');
 
-    if (!transaction_date || !description || !category || !amount) {
+    if (!transaction_date || !description || !category || !Number.isSafeInteger(amount) || amount < 1) {
       msg.textContent = 'Lengkapi semua kolom dulu ya.';
       return;
     }

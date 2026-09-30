@@ -350,7 +350,7 @@
 -->
 
 <!-- LOGIN -->
-<div class="view active" id="view-login">
+<div class="view" id="view-login">
   <div class="login-wrap">
     <div class="login-title">Aplikasi Pengelolaan<br>Kas Kelas</div>
     <div class="login-card">
@@ -367,7 +367,7 @@
 </div>
 
 <!-- APP -->
-<div class="view" id="view-app">
+<div class="view active" id="view-app">
   <div class="app-shell">
     <aside class="sidebar">
       <div>
@@ -466,19 +466,53 @@
 
 <script>
   let saldo = 2450000;
-  let transaksi = [
-    { desc:'Iuran mingguan', cat:'Iuran anggota', date:'3 Sep', type:'in', amount:90000 },
-    { desc:'Beli spidol & penghapus', cat:'Perlengkapan kelas', date:'1 Sep', type:'out', amount:35000 },
-    { desc:'Iuran mingguan', cat:'Iuran anggota', date:'28 Agu', type:'in', amount:120000 },
-    { desc:'Sumbangan acara 17-an', cat:'Kas keluar', date:'20 Agu', type:'out', amount:60000 },
-  ];
+  let transaksi = [];
 
   const pageTitles = { dashboard:'Beranda', riwayat:'Riwayat', tambah:'Tambah transaksi', anggota:'Anggota', laporan:'Laporan' };
   const routeMap = {
+    riwayat: '{{ route('riwayat') }}',
+    transaksi: '{{ route('transaksi') }}',
     anggota: '{{ route('anggota') }}',
     laporan: '{{ route('laporan') }}',
   };
   function fmt(n){ return 'Rp ' + n.toLocaleString('id-ID'); }
+
+  async function fetchJson(url, options = {}) {
+    const response = await fetch(url, {
+      credentials: 'same-origin',
+      ...options,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '',
+        ...(options.headers || {})
+      }
+    });
+    const payload = await response.json().catch(() => ({}));
+    const validationMessage = Object.values(payload.errors || {}).flat()[0];
+    if (!response.ok) throw new Error(validationMessage || payload.message || 'Gagal memproses transaksi.');
+    return payload;
+  }
+
+  async function loadTransaksi() {
+    try {
+      const payload = await fetchJson('/api/transaksi');
+      saldo = Number(payload.saldo || 0);
+      transaksi = (payload.transactions || []).map(item => ({
+        id: item.id,
+        desc: item.desc,
+        cat: item.cat,
+        date: item.date,
+        type: item.type,
+        amount: Number(item.amount || 0),
+        transaction_date: item.transaction_date
+      }));
+      renderDashboard();
+      renderRiwayat();
+    } catch (error) {
+      document.getElementById('dashLedger').textContent = error.message;
+    }
+  }
 
   function switchPage(name){
     if (routeMap[name]) {
@@ -505,17 +539,6 @@
     });
   });
 
-  document.getElementById('btnLogin').addEventListener('click', () => {
-    const u = document.getElementById('loginUser').value.trim();
-    const p = document.getElementById('loginPass').value.trim();
-    const err = document.getElementById('loginError');
-    if(!u || !p){ err.textContent = 'Isi email/NIS dan kata sandi dulu ya.'; return; }
-    err.textContent = '';
-    document.getElementById('view-login').classList.remove('active');
-    document.getElementById('view-app').classList.add('active');
-    switchPage('dashboard');
-  });
-
   function renderDashboard(){
     document.getElementById('dashSaldo').textContent = fmt(saldo);
     document.getElementById('dashLedger').innerHTML = transaksi.slice(0,4).map(t => `
@@ -539,27 +562,36 @@
     `).join('');
   }
 
-  document.getElementById('btnSimpan').addEventListener('click', () => {
+  document.getElementById('btnSimpan').addEventListener('click', async () => {
     const jenis = document.getElementById('fJenis').value;
     const tanggal = document.getElementById('fTanggal').value;
     const ket = document.getElementById('fKeterangan').value.trim();
     const jumlah = parseInt(document.getElementById('fJumlah').value, 10);
     const msg = document.getElementById('formMsg');
-    if(!ket || !jumlah){ msg.textContent = 'Lengkapi keterangan dan jumlah dulu ya.'; return; }
+    if(!ket || !Number.isSafeInteger(jumlah) || jumlah < 1){ msg.textContent = 'Isi keterangan dan jumlah lebih dari 0.'; return; }
     msg.textContent = '';
-    const dateLabel = tanggal
-      ? new Date(tanggal).toLocaleDateString('id-ID', {day:'numeric', month:'short'})
-      : new Date().toLocaleDateString('id-ID', {day:'numeric', month:'short'});
-    transaksi.unshift({ desc:ket, cat: jenis === 'in' ? 'Pemasukan manual' : 'Pengeluaran manual', date:dateLabel, type:jenis, amount:jumlah });
-    saldo = jenis === 'in' ? saldo + jumlah : saldo - jumlah;
-    document.getElementById('fKeterangan').value = '';
-    document.getElementById('fJumlah').value = '';
-    document.getElementById('fTanggal').value = '';
-    switchPage('dashboard');
+    try {
+      await fetchJson('/api/transaksi', {
+        method: 'POST',
+        body: JSON.stringify({
+          description: ket,
+          category: jenis === 'in' ? 'Pemasukan manual' : 'Pengeluaran manual',
+          type: jenis,
+          amount: jumlah,
+          transaction_date: tanggal || null
+        })
+      });
+      document.getElementById('fKeterangan').value = '';
+      document.getElementById('fJumlah').value = '';
+      document.getElementById('fTanggal').value = '';
+      await loadTransaksi();
+      switchPage('dashboard');
+    } catch (error) {
+      msg.textContent = error.message;
+    }
   });
 
-  renderDashboard();
-  renderRiwayat();
+  loadTransaksi();
 </script>
 
 </body>

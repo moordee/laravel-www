@@ -121,7 +121,15 @@ class TransactionController extends Controller
 
         return response()->json([
             'message' => 'Transaksi berhasil diperbarui.',
-            'data' => $transaction,
+            'data' => [
+                'id' => $transaction->id,
+                'desc' => $transaction->description,
+                'cat' => $transaction->category,
+                'date' => $transaction->transaction_date->translatedFormat('d M'),
+                'type' => $transaction->type,
+                'amount' => $transaction->amount,
+                'transaction_date' => $transaction->transaction_date->format('Y-m-d'),
+            ],
         ]);
     }
 

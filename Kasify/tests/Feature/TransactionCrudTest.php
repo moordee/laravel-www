@@ -44,7 +44,9 @@ class TransactionCrudTest extends TestCase
         ]);
 
         $updateResponse->assertOk();
-        $updateResponse->assertJsonPath('data.description', 'Iuran tambahan revisi');
+        $updateResponse->assertJsonPath('data.desc', 'Iuran tambahan revisi');
+        $updateResponse->assertJsonPath('data.cat', 'Sumbangan acara');
+        $updateResponse->assertJsonPath('data.transaction_date', '2026-09-21');
 
         $deleteResponse = $this->deleteJson('/api/transaksi/' . $transactionId);
         $deleteResponse->assertOk();

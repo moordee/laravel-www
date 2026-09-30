@@ -14,6 +14,8 @@ class Transaction extends Model
 {
     use HasFactory;
 
+    protected $table = 'transactions';
+
     /*
      * fillable menentukan kolom yang boleh diisi saat create/update.
      * ini penting agar mass assignment aman dan konsisten.

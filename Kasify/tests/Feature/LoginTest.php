@@ -70,22 +70,26 @@ class LoginTest extends TestCase
 
     public function test_api_anggota_can_update_and_delete_member(): void
     {
-        $member = Anggota::create([
+        $createResponse = $this->postJson('/api/anggota', [
             'nama' => 'Beni',
             'status' => 'unpaid',
-        ]);
+        ])->assertCreated()
+            ->assertJsonPath('data.nama', 'Beni')
+            ->assertJsonPath('data.status', 'unpaid');
 
-        $this->putJson('/api/anggota/' . $member->id, [
+        $memberId = $createResponse->json('data.id');
+
+        $this->putJson('/api/anggota/' . $memberId, [
             'nama' => 'Beni Setiawan',
             'status' => 'paid',
         ])->assertOk()
             ->assertJsonFragment(['nama' => 'Beni Setiawan'])
             ->assertJsonFragment(['status' => 'paid']);
 
-        $this->deleteJson('/api/anggota/' . $member->id)
+        $this->deleteJson('/api/anggota/' . $memberId)
             ->assertOk();
 
-        $this->assertDatabaseMissing('anggotas', ['id' => $member->id]);
+        $this->assertDatabaseMissing('anggotas', ['id' => $memberId]);
     }
 
     public function test_home_redirects_to_beranda(): void
@@ -98,5 +102,18 @@ class LoginTest extends TestCase
         $this->actingAs($user)
             ->get('/home')
             ->assertRedirect('/beranda');
+    }
+
+    public function test_riwayat_and_transaksi_keep_all_page_navigation_links(): void
+    {
+        $user = User::factory()->create();
+
+        foreach (['riwayat', 'transaksi'] as $page) {
+            $response = $this->actingAs($user)->get(route($page));
+
+            $response->assertOk()
+                ->assertSee('href="' . route('anggota') . '"', false)
+                ->assertSee('href="' . route('laporan') . '"', false);
+        }
     }
 }

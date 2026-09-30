@@ -210,10 +210,12 @@
     display:flex; flex-direction:column; align-items:center; gap:5px;
     background:none; border:none; cursor:pointer;
     color:#8FA093; font-size:10.5px;
+    text-decoration:none;
   }
   .nav-btn .dot{ width:9px; height:9px; border-radius:50%; background:currentColor; opacity:.5; }
   .nav-btn.active{ color:var(--gold-soft); }
   .nav-btn.active .dot{ background:var(--gold-soft); opacity:1; }
+  .sidebar nav a{ text-decoration:none; }
 
   /* ---------- DASHBOARD PAGE ---------- */
   .banner{
@@ -350,7 +352,7 @@
 -->
 
 <!-- LOGIN -->
-<div class="view active" id="view-login">
+<div class="view" id="view-login">
   <div class="login-wrap">
     <div class="login-title">Aplikasi Pengelolaan<br>Kas Kelas</div>
     <div class="login-card">
@@ -367,7 +369,7 @@
 </div>
 
 <!-- APP -->
-<div class="view" id="view-app">
+<div class="view active" id="view-app">
   <div class="app-shell">
     <aside class="sidebar">
       <div>
@@ -378,6 +380,8 @@
         <button class="nav-btn active" data-page="dashboard"><span class="dot"></span>Beranda</button>
         <button class="nav-btn" data-page="riwayat"><span class="dot"></span>Riwayat</button>
         <button class="nav-btn" data-page="tambah"><span class="dot"></span>Tambah transaksi</button>
+        <a class="nav-btn" href="{{ route('anggota') }}"><span class="dot"></span>Anggota</a>
+        <a class="nav-btn" href="{{ route('laporan') }}"><span class="dot"></span>Laporan</a>
       </nav>
       <div class="sidebar-foot">Dikelola bersama oleh bendahara kelas &mdash; diperbarui otomatis tiap ada transaksi baru.</div>
     </aside>
@@ -404,8 +408,8 @@
           <div class="icon-row">
             <button class="icon-btn" data-page="tambah"><span class="icon-box">+</span>Tambah</button>
             <button class="icon-btn" data-page="riwayat"><span class="icon-box">&#8801;</span>Riwayat</button>
-            <button class="icon-btn"><span class="icon-box">&#128101;</span>Anggota</button>
-            <button class="icon-btn"><span class="icon-box">&#128202;</span>Laporan</button>
+            <a class="icon-btn" href="{{ route('anggota') }}"><span class="icon-box">&#128101;</span>Anggota</a>
+            <a class="icon-btn" href="{{ route('laporan') }}"><span class="icon-box">&#128202;</span>Laporan</a>
           </div>
           <div class="section-title">Transaksi terbaru</div>
           <div class="mini-ledger" id="dashLedger"></div>
@@ -457,22 +461,44 @@
         <button class="nav-btn active" data-page="dashboard"><span class="dot"></span>Beranda</button>
         <button class="nav-btn" data-page="riwayat"><span class="dot"></span>Riwayat</button>
         <button class="nav-btn" data-page="tambah"><span class="dot"></span>Tambah</button>
+        <a class="nav-btn" href="{{ route('anggota') }}"><span class="dot"></span>Anggota</a>
+        <a class="nav-btn" href="{{ route('laporan') }}"><span class="dot"></span>Laporan</a>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-  let saldo = 2450000;
-  let transaksi = [
-    { desc:'Iuran mingguan', cat:'Iuran anggota', date:'3 Sep', type:'in', amount:90000 },
-    { desc:'Beli spidol & penghapus', cat:'Perlengkapan kelas', date:'1 Sep', type:'out', amount:35000 },
-    { desc:'Iuran mingguan', cat:'Iuran anggota', date:'28 Agu', type:'in', amount:120000 },
-    { desc:'Sumbangan acara 17-an', cat:'Kas keluar', date:'20 Agu', type:'out', amount:60000 },
-  ];
+  let saldo = 0;
+  let transaksi = [];
 
   const pageTitles = { dashboard:'Beranda', riwayat:'Riwayat', tambah:'Tambah transaksi' };
   function fmt(n){ return 'Rp ' + n.toLocaleString('id-ID'); }
+
+  async function loadTransaksi() {
+    try {
+      const response = await fetch('/api/transaksi', {
+        credentials: 'same-origin',
+        headers: { 'Accept': 'application/json' }
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload.message || 'Gagal memuat transaksi.');
+      saldo = Number(payload.saldo || 0);
+      transaksi = (payload.transactions || []).map(item => ({
+        id: item.id,
+        desc: item.desc,
+        cat: item.cat,
+        date: item.date,
+        type: item.type,
+        amount: Number(item.amount || 0),
+        transaction_date: item.transaction_date
+      }));
+      renderDashboard();
+      renderRiwayat();
+    } catch (error) {
+      document.getElementById('riwayatList').textContent = error.message;
+    }
+  }
 
   function switchPage(name){
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -485,17 +511,6 @@
 
   document.querySelectorAll('[data-page]').forEach(el => {
     el.addEventListener('click', () => switchPage(el.dataset.page));
-  });
-
-  document.getElementById('btnLogin').addEventListener('click', () => {
-    const u = document.getElementById('loginUser').value.trim();
-    const p = document.getElementById('loginPass').value.trim();
-    const err = document.getElementById('loginError');
-    if(!u || !p){ err.textContent = 'Isi email/NIS dan kata sandi dulu ya.'; return; }
-    err.textContent = '';
-    document.getElementById('view-login').classList.remove('active');
-    document.getElementById('view-app').classList.add('active');
-    switchPage('dashboard');
   });
 
   function renderDashboard(){
@@ -521,27 +536,45 @@
     `).join('');
   }
 
-  document.getElementById('btnSimpan').addEventListener('click', () => {
+  document.getElementById('btnSimpan').addEventListener('click', async () => {
     const jenis = document.getElementById('fJenis').value;
     const tanggal = document.getElementById('fTanggal').value;
     const ket = document.getElementById('fKeterangan').value.trim();
     const jumlah = parseInt(document.getElementById('fJumlah').value, 10);
     const msg = document.getElementById('formMsg');
-    if(!ket || !jumlah){ msg.textContent = 'Lengkapi keterangan dan jumlah dulu ya.'; return; }
+    if(!ket || !Number.isSafeInteger(jumlah) || jumlah < 1){ msg.textContent = 'Isi keterangan dan jumlah lebih dari 0.'; return; }
     msg.textContent = '';
-    const dateLabel = tanggal
-      ? new Date(tanggal).toLocaleDateString('id-ID', {day:'numeric', month:'short'})
-      : new Date().toLocaleDateString('id-ID', {day:'numeric', month:'short'});
-    transaksi.unshift({ desc:ket, cat: jenis === 'in' ? 'Pemasukan manual' : 'Pengeluaran manual', date:dateLabel, type:jenis, amount:jumlah });
-    saldo = jenis === 'in' ? saldo + jumlah : saldo - jumlah;
-    document.getElementById('fKeterangan').value = '';
-    document.getElementById('fJumlah').value = '';
-    document.getElementById('fTanggal').value = '';
-    switchPage('dashboard');
+    try {
+      const response = await fetch('/api/transaksi', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || ''
+        },
+        body: JSON.stringify({
+          description: ket,
+          category: jenis === 'in' ? 'Pemasukan manual' : 'Pengeluaran manual',
+          type: jenis,
+          amount: jumlah,
+          transaction_date: tanggal || null
+        })
+      });
+      const payload = await response.json().catch(() => ({}));
+      const validationMessage = Object.values(payload.errors || {}).flat()[0];
+      if (!response.ok) throw new Error(validationMessage || payload.message || 'Gagal menyimpan transaksi.');
+      document.getElementById('fKeterangan').value = '';
+      document.getElementById('fJumlah').value = '';
+      document.getElementById('fTanggal').value = '';
+      await loadTransaksi();
+      switchPage('dashboard');
+    } catch (error) {
+      msg.textContent = error.message;
+    }
   });
 
-  renderDashboard();
-  renderRiwayat();
+  loadTransaksi();
 </script>
 
 </body>

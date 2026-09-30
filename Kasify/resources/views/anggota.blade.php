@@ -1,11 +1,8 @@
 @extends('layouts.kas-app')
 
 {{--
-  Halaman Anggota berfungsi sebagai daftar data peserta kelas dan status iuran.
-  Front-end ini masih menggunakan data sementara untuk prototipe,
-  sedangkan versi production seharusnya mengambil data dari API /api/anggota.
-  Fitur edit, hapus, dan toggle status adalah contoh flow CRUD yang nanti
-  dipetakan ke controller Eloquent di server.
+  Halaman Anggota menampilkan data anggota dan status iuran dari API /api/anggota.
+  Tambah, edit, hapus, dan toggle status disimpan melalui controller Eloquent.
 --}}
 
 @section('title', 'Anggota')
@@ -58,10 +55,6 @@
   async function fetchJson(url, options = {}) {
     const response = await fetch(url, {
       credentials: 'same-origin',
-      headers: {
-        ...apiHeaders,
-        ...(options.headers || {})
-      },
       ...options,
       headers: {
         ...apiHeaders,
